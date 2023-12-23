@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    function validate() {
+        if (document.signup.FullName.value == "") {
+            alert("FULL NAME REQUIRED ");
+            return false;
+        }
+        if (!/^[a-zA-Z/\s/]*$/g.test(document.signup.FullName.value)) {
+            alert("Invalid characters");
+            return false;
+        }
+    
+        
+    
+        if (document.signup.Username.value == "") {
+            alert("EMAIL REQUIRED");
+            return false;
+        }
+    
+        if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/g.test(document.signup.Username.value)){
+            alert("INVALID CHARACTER");
+            return false;
+        }
+    
+        if (document.signup.Password.value == "") {
+            alert("PASSWORD REQUIRED");
+            return false;
+        }
+             
+        if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/g.test(document.signup.Password.value)){
+            alert("PASSWORD MUST CONTAIN 8-20 CHARACTER AND UPPERCASE LOWERCASE AND SPECIAL CHARACTER REQUIRED");
+            return false;
+        }
+        
+    
+        if(document.signup.Address.value==""){
+            alert("ADDRESS REQUIRED");
+            return false;
+        }
+    
+       
+        return (true);
+    
+    }
+    
+
+</script>
+    
+    
+    
+    
+    
+</head>
+<body>
+    <form  name="signup"class="login" method="post" action="./register.php" onsubmit="return(validate())">
+        <h3>Register Here</h3>
+    
+        <label class="reg-lbl" for="name">Name</label>
+        <input name = "FullName" class="reg-ip" type="text" placeholder="Full Name" >
+    
+        <label class="reg-lbl" for="username">Username</label>
+        <input name = "Username" class="reg-ip" type="text" placeholder="Email or Phone"  >
+        
+        <label class="reg-lbl" for="password">Password</label>
+        <input name = "Password" class="reg-ip" type="password" placeholder="Password"  >
+    
+        <label class="reg-lbl" for="address">Address</label>
+        <input name = "Address" class="reg-ip" type="text" placeholder="Address" >
+        
+        <input name = "regbtn" type="submit" value="Register" class="register">
+    </form>
+</body>
+</html>
